@@ -9,7 +9,8 @@ public class BallController : MonoBehaviour
 
     [Header("Values")]
     [SerializeField] private float stopVelocity = 0.05f;
-    [SerializeField] private float shotPower = 1f;
+    [SerializeField] private float shotPower = 100f;
+    [SerializeField] private float maxLineLength = 5f;
 
     private Rigidbody rb;
 
@@ -24,6 +25,17 @@ public class BallController : MonoBehaviour
         lineRenderer.enabled = false;
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isIdle)
+            {
+                isAiming = true;
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
         if (rb.velocity.magnitude < stopVelocity)
@@ -32,14 +44,6 @@ public class BallController : MonoBehaviour
         }
 
         ProcessAim();
-    }
-
-    private void OnMouseDown()
-    {
-        if (isIdle)
-        {
-            isAiming = true;
-        }
     }
 
     private void ProcessAim()
@@ -72,7 +76,7 @@ public class BallController : MonoBehaviour
         Vector3 horizontalWorldPont = new Vector3(worldPoint.x, transform.position.y, worldPoint.z);
 
         Vector3 direction = (horizontalWorldPont - transform.position).normalized;
-        float strength = Vector3.Distance(transform.position, horizontalWorldPont);
+        float strength = Mathf.Clamp(Vector3.Distance(transform.position, horizontalWorldPont), 0, maxLineLength);
 
         rb.AddForce(direction * strength * shotPower);
         isIdle = false;
@@ -85,13 +89,17 @@ public class BallController : MonoBehaviour
         isIdle = true;
     }
 
-    private void DrawLine(Vector3 worldpoint)
+    private void DrawLine(Vector3 worldPoint)
     {
         Vector3[] positions =
         {
             transform.position,
-            worldpoint
+            worldPoint
         };
+
+        Vector3 dir = positions[1] - positions[0];
+        float dist = Mathf.Clamp(Vector3.Distance(positions[0], positions[1]), 0, maxLineLength);
+        positions[1] = positions[0] + (dir.normalized * dist);
 
         lineRenderer.SetPositions(positions);
         lineRenderer.enabled = true;
