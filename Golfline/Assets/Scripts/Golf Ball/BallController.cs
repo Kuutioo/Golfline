@@ -6,6 +6,7 @@ public class BallController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;
+    private Vector3 lastPosition;
 
     [Header("Values")]
     [SerializeField] private float stopVelocity = 0.05f;
@@ -70,6 +71,7 @@ public class BallController : MonoBehaviour
 
     private void Shoot(Vector3 worldPoint)
     {
+        lastPosition = transform.position;
         isAiming = false;
         lineRenderer.enabled = false;
 
@@ -121,6 +123,23 @@ public class BallController : MonoBehaviour
         else
         {
             return null;
+        }
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.CompareTag("Hole"))
+        {
+            Debug.Log("Ball in hole");
+        }
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.CompareTag("Bounds"))
+        {
+            transform.position = lastPosition;
+            Stop();
         }
     }
 }
