@@ -15,11 +15,13 @@ public class BallController : MonoBehaviour
     [SerializeField] private float stopVelocity = 0.05f;
     [SerializeField] private float shotPower = 100f;
     [SerializeField] private float maxLineLength = 5f;
+
     private int strokes;
 
-   
     private Rigidbody rb;
     private Vector3 lastPosition;
+
+    private SphereCollider ballCollider;
 
     private bool isIdle;
     private bool isAiming;
@@ -30,6 +32,8 @@ public class BallController : MonoBehaviour
 
         isAiming = false;
         lineRenderer.enabled = false;
+
+        ballCollider = GetComponent<SphereCollider>();
     }
 
     private void Update()
@@ -45,7 +49,7 @@ public class BallController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.velocity.magnitude < stopVelocity)
+        if (rb.velocity.magnitude < stopVelocity && isGrounded())
         {
             Stop();
         }
@@ -80,7 +84,9 @@ public class BallController : MonoBehaviour
         lastPosition = transform.position;
         isAiming = false;
         lineRenderer.enabled = false;
+
         powerSlider.value = 0f;
+
         strokes++;
         strokeCountLabel.text = strokes.ToString();
 
@@ -102,8 +108,6 @@ public class BallController : MonoBehaviour
 
     private void DrawLine(Vector3 worldPoint)
     {
-        
-
         Vector3[] positions =
         {
             transform.position,
@@ -137,6 +141,11 @@ public class BallController : MonoBehaviour
         {
             return null;
         }
+    }
+
+    private bool isGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, ballCollider.transform.position.y);
     }
 
     private void OnTriggerEnter(Collider other)
