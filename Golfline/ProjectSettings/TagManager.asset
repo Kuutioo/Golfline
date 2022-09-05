@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Hole
   - Bounds
+  - Bounding Box
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ball
   - Water
   - UI
   - 
