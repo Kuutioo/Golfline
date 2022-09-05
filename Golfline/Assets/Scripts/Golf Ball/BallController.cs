@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BallController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;
-    
+    [SerializeField] private Slider powerSlider;
+    [SerializeField] private TextMeshProUGUI strokeCountLabel;
+
     [Header("Values")]
     [SerializeField] private float stopVelocity = 0.05f;
     [SerializeField] private float shotPower = 100f;
     [SerializeField] private float maxLineLength = 5f;
+    private int strokes;
 
+   
     private Rigidbody rb;
     private Vector3 lastPosition;
 
@@ -74,6 +80,9 @@ public class BallController : MonoBehaviour
         lastPosition = transform.position;
         isAiming = false;
         lineRenderer.enabled = false;
+        powerSlider.value = 0f;
+        strokes++;
+        strokeCountLabel.text = strokes.ToString();
 
         Vector3 horizontalWorldPont = new Vector3(worldPoint.x, transform.position.y, worldPoint.z);
 
@@ -93,6 +102,8 @@ public class BallController : MonoBehaviour
 
     private void DrawLine(Vector3 worldPoint)
     {
+        
+
         Vector3[] positions =
         {
             transform.position,
@@ -102,6 +113,8 @@ public class BallController : MonoBehaviour
         Vector3 dir = positions[1] - positions[0];
         float dist = Mathf.Clamp(Vector3.Distance(positions[0], positions[1]), 0, maxLineLength);
         positions[1] = positions[0] + (dir.normalized * dist);
+
+        powerSlider.value = dist;
 
         lineRenderer.SetPositions(positions);
         lineRenderer.enabled = true;
