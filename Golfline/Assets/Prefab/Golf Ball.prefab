@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 799620068524077607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12.5, y: 12.5, z: 25}
+  m_LocalScale: {x: 12.5, y: 12.5, z: 12.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5801723753706028204}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1897335087968460123}
   stopVelocity: 0.15
-  shotPower: 150
+  shotPower: 450
   maxLineLength: 5
 --- !u!1 &6227188330951599142
 GameObject:
@@ -329,7 +329,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5421581
+    widthMultiplier: 0.25
     widthCurve:
       serializedVersion: 2
       m_Curve:

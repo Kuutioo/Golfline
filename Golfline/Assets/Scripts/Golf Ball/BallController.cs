@@ -6,14 +6,14 @@ public class BallController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;
-    private Vector3 lastPosition;
-
+    
     [Header("Values")]
     [SerializeField] private float stopVelocity = 0.05f;
     [SerializeField] private float shotPower = 100f;
     [SerializeField] private float maxLineLength = 5f;
 
     private Rigidbody rb;
+    private Vector3 lastPosition;
 
     private bool isIdle;
     private bool isAiming;
@@ -126,11 +126,20 @@ public class BallController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerEnter(Collider other)
     {
-        if (col.CompareTag("Hole"))
+        if (other.CompareTag("Hole"))
         {
             Debug.Log("Ball in hole");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Bounding Box"))
+        {
+            transform.position = lastPosition;
+            Stop();
         }
     }
 
