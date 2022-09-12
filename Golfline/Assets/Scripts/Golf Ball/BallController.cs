@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Slider powerSlider;
     [SerializeField] private TextMeshProUGUI strokeCountLabel;
+    [SerializeField] private GameObject[] levelSpawnPoints;
 
     [Header("Values")]
     [SerializeField] private float stopVelocity = 0.05f;
@@ -17,6 +18,7 @@ public class BallController : MonoBehaviour
     [SerializeField] private float maxLineLength = 5f;
 
     private int strokes;
+    private int level = 0;
 
     private Rigidbody rb;
     private Vector3 lastPosition;
@@ -25,6 +27,7 @@ public class BallController : MonoBehaviour
 
     private bool isIdle;
     private bool isAiming;
+    private bool mouseButtonUp;
 
     private void Awake()
     {
@@ -36,6 +39,11 @@ public class BallController : MonoBehaviour
         ballCollider = GetComponent<SphereCollider>();
     }
 
+    private void Start()
+    {
+        transform.position = levelSpawnPoints[level].transform.position;
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -43,7 +51,12 @@ public class BallController : MonoBehaviour
             if (isIdle)
             {
                 isAiming = true;
+                mouseButtonUp = false;
             }
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            mouseButtonUp = true;
         }
     }
 
@@ -73,8 +86,9 @@ public class BallController : MonoBehaviour
 
         DrawLine(worldPoint.Value);
 
-        if (Input.GetMouseButtonUp(0))
+        if (mouseButtonUp)
         {
+            mouseButtonUp = false;
             Shoot(worldPoint.Value);
         }
     }
@@ -135,10 +149,6 @@ public class BallController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(worldMousePosNear, worldMousePosFar - worldMousePosNear, out hit, float.PositiveInfinity))
         {
-            if (hit.collider.CompareTag("Bounding Box"))
-            {
-                return null;
-            }
             return hit.point;
         } 
         else
@@ -152,10 +162,23 @@ public class BallController : MonoBehaviour
         return Physics.Raycast(transform.position, -Vector3.up, ballCollider.transform.position.y);
     }
 
+    private void SwitchCourse()
+    {
+        level++;
+        transform.position = levelSpawnPoints[level].transform.position;
+        lastPosition = transform.position;
+
+        strokes = 0;
+        strokeCountLabel.text = strokes.ToString();
+
+        Stop();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Hole"))
         {
+            SwitchCourse();
             Debug.Log("Ball in hole");
         }
     }
@@ -163,11 +186,6 @@ public class BallController : MonoBehaviour
     private void OnCollisionEnter(Collision col)
     {
         if (col.collider.CompareTag("Bounds"))
-        {
-            transform.position = lastPosition;
-            Stop();
-        }
-        if (col.collider.CompareTag("Bounding Box"))
         {
             transform.position = lastPosition;
             Stop();
