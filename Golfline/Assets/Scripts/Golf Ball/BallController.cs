@@ -135,6 +135,10 @@ public class BallController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(worldMousePosNear, worldMousePosFar - worldMousePosNear, out hit, float.PositiveInfinity))
         {
+            if (hit.collider.CompareTag("Bounding Box"))
+            {
+                return null;
+            }
             return hit.point;
         } 
         else
@@ -156,18 +160,14 @@ public class BallController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionEnter(Collision col)
     {
-        if (other.CompareTag("Bounding Box"))
+        if (col.collider.CompareTag("Bounds"))
         {
             transform.position = lastPosition;
             Stop();
         }
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.collider.CompareTag("Bounds"))
+        if (col.collider.CompareTag("Bounding Box"))
         {
             transform.position = lastPosition;
             Stop();
