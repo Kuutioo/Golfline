@@ -11,6 +11,8 @@ public class MoveAroundObject : MonoBehaviour
     [SerializeField] private float smoothTime = 0.2f;
     [SerializeField] private float mouseSensitivity = 3.0f;
     [SerializeField] private float distanceFromTarget = 5.0f;
+    [SerializeField] private float clampRotationX = 5;
+    [SerializeField] private float clampRotationY = 40;
 
     private float rotationY;
     private float rotationX = 20f;
@@ -34,7 +36,7 @@ public class MoveAroundObject : MonoBehaviour
             rotationY += mouseX;
             rotationX -= mouseY;
 
-            rotationX = Mathf.Clamp(rotationX, -40, 40);
+            rotationX = Mathf.Clamp(rotationX, clampRotationX, clampRotationY);
 
             Vector3 nextRotation = new Vector3(rotationX, rotationY);
             currentRotation = Vector3.SmoothDamp(currentRotation, nextRotation, ref smoothVelocity, smoothTime);
