@@ -1,18 +1,31 @@
 using System.Collections;
+using TMPro;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TMP_InputField inputPlayerName;
+    [SerializeField] private PlayerRecord playerRecord;
+    [SerializeField] private Button buttonStart;
+    [SerializeField] private Button buttonAddPlayer;
+
+   public void ButtonAddPlayer()
     {
-        
+        playerRecord.AddPlayer(inputPlayerName.text);
+        buttonStart.interactable = true;
+        inputPlayerName.text = "";
+        if (playerRecord.playerList.Count == playerRecord.playerColors.Length)
+        {
+            buttonAddPlayer.interactable = false;
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ButtonStart()
     {
-        
+        SceneManager.LoadScene(playerRecord.levels[0]);
     }
 }

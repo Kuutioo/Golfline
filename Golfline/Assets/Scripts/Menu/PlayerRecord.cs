@@ -5,8 +5,19 @@ using UnityEngine;
 public class PlayerRecord : MonoBehaviour
 {
     public List<Player> playerList;
-    public string[] level;
+    public string[] levels;
     public Color[] playerColors;
+
+    void OnEnable()
+    {
+        playerList = new List<Player>();
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void AddPlayer(string name)
+    {
+        playerList.Add(new Player(name, playerColors[playerList.Count], levels.Length));
+    }
  
 
     public class Player
