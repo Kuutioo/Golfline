@@ -182,7 +182,6 @@ public class BallController : MonoBehaviour
         if (other.CompareTag("Hole"))
         {
             SwitchCourse();
-            Debug.Log("Ball in hole");
         }
     }
 
