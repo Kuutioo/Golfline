@@ -11,6 +11,7 @@ public class BallController : MonoBehaviour
     [SerializeField] private Slider powerSlider;
     [SerializeField] private TextMeshProUGUI strokeCountLabel;
     [SerializeField] private GameObject[] levelSpawnPoints;
+    [SerializeField] private LevelManager levelManager;
 
     [Header("Values")]
     [SerializeField] private float stopVelocity = 0.05f;
@@ -181,8 +182,8 @@ public class BallController : MonoBehaviour
     {
         if (other.CompareTag("Hole"))
         {
+            levelManager.NextPlayer(strokes);
             SwitchCourse();
-            Debug.Log("Ball in hole");
         }
     }
 
