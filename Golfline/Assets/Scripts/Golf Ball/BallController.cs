@@ -18,7 +18,6 @@ public class BallController : MonoBehaviour
     [SerializeField] private float shotPower = 100f;
     [SerializeField] private float maxLineLength = 5f;
     
-
     private int strokes;
     private int level = 0;
 
@@ -41,11 +40,6 @@ public class BallController : MonoBehaviour
 
         ballCollider = GetComponent<SphereCollider>();
         
-    }
-
-    private void Start()
-    {
-
     }
 
     private void Update()
@@ -166,7 +160,7 @@ public class BallController : MonoBehaviour
         return Physics.Raycast(transform.position, -Vector3.up, ballCollider.transform.position.y);
     }
 
-    private void SwitchCourse()
+    public void SwitchCourse()
     {
         level++;
         transform.position = levelSpawnPoints[level].transform.position;
@@ -183,7 +177,7 @@ public class BallController : MonoBehaviour
         if (other.CompareTag("Hole"))
         {
             levelManager.NextPlayer(strokes);
-            SwitchCourse();
+            // SwitchCourse();
         }
     }
 

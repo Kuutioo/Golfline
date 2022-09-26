@@ -8681,7 +8681,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.88974, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.88974, y: 0, z: 11.345795, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -27294,6 +27294,11 @@ PrefabInstance:
       propertyPath: powerSlider
       value: 
       objectReference: {fileID: 393519158}
+    - target: {fileID: 7971261021406695216, guid: 608b8d62b75b0e74196067e4304a7e8d,
+        type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 151638784}
     - target: {fileID: 7971261021406695216, guid: 608b8d62b75b0e74196067e4304a7e8d,
         type: 3}
       propertyPath: strokeCountLabel
