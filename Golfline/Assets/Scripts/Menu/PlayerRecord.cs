@@ -7,6 +7,7 @@ public class PlayerRecord : MonoBehaviour
     public List<Player> playerList;
     public string[] levels;
     public Color[] playerColors;
+    public int levelIndex;
 
     void OnEnable()
     {
@@ -18,19 +19,24 @@ public class PlayerRecord : MonoBehaviour
     {
         playerList.Add(new Player(name, playerColors[playerList.Count], levels.Length));
     }
+
+    public void AddStrokes(int playerIndex, int StrokeCount)
+    {
+        playerList[playerIndex].strokes[levelIndex] = StrokeCount;
+    }
  
 
     public class Player
     {
         public string name;
         public Color color;
-        public int[] putts;
+        public int[] strokes;
 
         public Player(string newName, Color newColor, int levelCount)
         {
             name = newName;
             color = newColor;
-            putts = new int[levelCount];
+            strokes = new int[levelCount];
         }
     }
 }

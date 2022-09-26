@@ -25,4 +25,18 @@ public class LevelManager : MonoBehaviour
         labelPlayerName.text = playerRecord.playerList[playerIndex].name;
     }
 
+    public void NextPlayer(int previousStrokes)
+    {
+        playerRecord.AddStrokes(playerIndex, previousStrokes);
+        if(playerIndex < playerRecord.playerList.Count-1)
+        {
+            playerIndex++;
+            ball.SetupBall(playerRecord.playerColors[playerIndex]);
+        }
+        else
+        {
+            
+            
+        }
+    }
 }
