@@ -16,7 +16,6 @@ public class LevelManager : MonoBehaviour
         playerRecord = GameObject.Find("Player Record").GetComponent<PlayerRecord>();
         playerIndex = 0;
         SetupPlayer();
-
     }
 
     private void SetupPlayer()
@@ -31,12 +30,13 @@ public class LevelManager : MonoBehaviour
         if(playerIndex < playerRecord.playerList.Count-1)
         {
             playerIndex++;
-            ball.SetupBall(playerRecord.playerColors[playerIndex]);
-        }
+            SetupPlayer();
+        } 
         else
         {
-            
-            
+            ball.SwitchCourse();
+            playerIndex = 0;
+            SetupPlayer();
         }
     }
 }
