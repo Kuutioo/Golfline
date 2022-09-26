@@ -44,7 +44,7 @@ public class BallController : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     private void Update()
