@@ -16,12 +16,14 @@ public class BallController : MonoBehaviour
     [SerializeField] private float stopVelocity = 0.05f;
     [SerializeField] private float shotPower = 100f;
     [SerializeField] private float maxLineLength = 5f;
+    
 
     private int strokes;
     private int level = 0;
 
     private Rigidbody rb;
     private Vector3 lastPosition;
+    
 
     private SphereCollider ballCollider;
 
@@ -37,11 +39,12 @@ public class BallController : MonoBehaviour
         lineRenderer.enabled = false;
 
         ballCollider = GetComponent<SphereCollider>();
+        
     }
 
     private void Start()
     {
-        transform.position = levelSpawnPoints[level].transform.position;
+        
     }
 
     private void Update()
@@ -190,5 +193,18 @@ public class BallController : MonoBehaviour
             transform.position = lastPosition;
             Stop();
         }
+    }
+
+    public void SetupBall(Color color)
+    {
+        transform.position = levelSpawnPoints[level].transform.position;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        GetComponent<MeshRenderer>().material.SetColor("_Color", color);
+        lineRenderer.material.SetColor("_Color", color);
+        lineRenderer.enabled = true;
+        strokes = 0;
+        strokeCountLabel.text = "0";
+
     }
 }
