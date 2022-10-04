@@ -24,7 +24,6 @@ public class BallController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 lastPosition;
     
-
     private SphereCollider ballCollider;
 
     private bool isIdle;
@@ -115,6 +114,7 @@ public class BallController : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+        lineRenderer.enabled = false;
         isIdle = true;
     }
 
@@ -177,7 +177,6 @@ public class BallController : MonoBehaviour
         if (other.CompareTag("Hole"))
         {
             levelManager.NextPlayer(strokes);
-            // SwitchCourse();
         }
     }
 
@@ -193,13 +192,12 @@ public class BallController : MonoBehaviour
     public void SetupBall(Color color)
     {
         transform.position = levelSpawnPoints[level].transform.position;
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        GetComponent<MeshRenderer>().material.SetColor("_Color", color);
-        lineRenderer.material.SetColor("_Color", color);
+        GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
+        lineRenderer.material.SetColor("_BaseColor", color);
         lineRenderer.enabled = true;
         strokes = 0;
         strokeCountLabel.text = "0";
 
+        Stop();
     }
 }

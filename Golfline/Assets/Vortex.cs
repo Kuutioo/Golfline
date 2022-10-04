@@ -6,19 +6,18 @@ public class Vortex : MonoBehaviour
 {
     [SerializeField] private float vortexForce;
 
-    private CapsuleCollider vortexCollider;
-    private BallController ballController;
+    private BoxCollider boxCollider;
 
     private void Awake()
     {
-        vortexCollider = GetComponent<CapsuleCollider>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Ball"))
         {
-            Vector3 normal = other.transform.position - vortexCollider.bounds.center;
+            Vector3 normal = other.transform.position - boxCollider.bounds.center;
             other.attachedRigidbody.AddForce(normal * -vortexForce);
         }
     }

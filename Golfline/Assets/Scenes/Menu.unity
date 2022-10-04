@@ -461,7 +461,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.75
+  m_fontSize: 31.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.05
+  m_fontSize: 45.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1239,9 +1239,10 @@ MonoBehaviour:
   levels:
   - Map 1
   playerColors:
-  - {r: 0.9245283, g: 0.09158063, b: 0.09158063, a: 0}
-  - {r: 0.06541473, g: 0.815784, b: 0.9245283, a: 0}
-  - {r: 0.990566, g: 0.042052314, b: 0.8760362, a: 0}
+  - {r: 0.9433962, g: 0.38714847, b: 0.38714847, a: 0}
+  - {r: 0.28346387, g: 0.84397584, b: 0.9245283, a: 0}
+  - {r: 0.9339623, g: 0.40970984, b: 0.86963665, a: 0}
+  - {r: 0.93333334, g: 0.8803789, b: 0.40784317, a: 0}
   levelIndex: 0
 --- !u!4 &1439253477
 Transform:
@@ -1816,7 +1817,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.15
+  m_fontSize: 50.35
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1

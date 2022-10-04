@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5951896921279046533}
   - component: {fileID: 5971849427574348413}
-  - component: {fileID: 5231457619212180040}
+  - component: {fileID: 1047138241174563844}
   m_Layer: 0
   m_Name: Vortex Trigger
   m_TagString: Untagged
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vortexForce: 4
---- !u!136 &5231457619212180040
-CapsuleCollider:
+--- !u!65 &1047138241174563844
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -56,10 +56,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.10823347
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0.0046884897, y: 0, z: -0.009691656}
+  serializedVersion: 2
+  m_Size: {x: 0.1904727, y: 0.009070325, z: 0.18961373}
+  m_Center: {x: 0.0032430233, y: 0.09569811, z: -0.0008294463}
 --- !u!1 &5840110830113289605
 GameObject:
   m_ObjectHideFlags: 0

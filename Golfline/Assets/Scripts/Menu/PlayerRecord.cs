@@ -12,7 +12,7 @@ public class PlayerRecord : MonoBehaviour
     void OnEnable()
     {
         playerList = new List<Player>();
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void AddPlayer(string name)
