@@ -38,7 +38,6 @@ public class BallController : MonoBehaviour
         lineRenderer.enabled = false;
 
         ballCollider = GetComponent<SphereCollider>();
-        
     }
 
     private void Update()
@@ -144,9 +143,13 @@ public class BallController : MonoBehaviour
         Vector3 worldMousePosFar = Camera.main.ScreenToWorldPoint(screenMousePosFar);
         Vector3 worldMousePosNear = Camera.main.ScreenToWorldPoint(screenMousePosNear);
 
+        Debug.Log("Far: " + screenMousePosFar);
+        Debug.Log("Near: " + screenMousePosNear);
+
         RaycastHit hit;
         if (Physics.Raycast(worldMousePosNear, worldMousePosFar - worldMousePosNear, out hit, float.PositiveInfinity))
         {
+            hit.point.Set(hit.point.x, 0, hit.point.z);
             return hit.point;
         } 
         else
