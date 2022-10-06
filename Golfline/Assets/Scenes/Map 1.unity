@@ -1895,6 +1895,61 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5435325cf4bf3824b943977736860112, type: 3}
+--- !u!1 &63260616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63260618}
+  - component: {fileID: 63260617}
+  m_Layer: 0
+  m_Name: Clouds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &63260617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63260616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0204c2658134a7e4db086cb261714f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloudMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  cloudMat: {fileID: 2100000, guid: 38c3c8b0bad8a3341805e86786fd71b4, type: 2}
+  cloudSize: 1
+  maxScale: 2
+  timeScale: 0.1
+  texScale: 0.1
+  minNoiseSize: 0.6
+  sizeScale: 1.5
+  cam: {fileID: 1402006577}
+  maxDistance: 100
+  batchesToCreate: 4
+--- !u!4 &63260618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63260616}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -76.25, y: 43.25, z: -63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &65271499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41489,6 +41544,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7387822159839823172, guid: ba5b1b2c609cce24f8863ac9bc524947,
     type: 3}
   m_PrefabInstance: {fileID: 683246136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1402006577 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6658761906544429478, guid: 2d16a76b11ff1ee46972768238b8893f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1617689896}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1402722323 stripped
 Transform:
