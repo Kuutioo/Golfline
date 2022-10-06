@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
@@ -162,7 +163,14 @@ public class BallController : MonoBehaviour
     public void SwitchCourse()
     {
         level++;
+
+        if (level > 1)
+        {
+            SceneManager.LoadScene("Scoreboard");
+        }
+
         transform.position = levelSpawnPoints[level].transform.position;
+        
         lastPosition = transform.position;
 
         strokes = 0;

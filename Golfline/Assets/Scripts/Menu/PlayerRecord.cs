@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerRecord : MonoBehaviour
 {
@@ -17,12 +18,18 @@ public class PlayerRecord : MonoBehaviour
 
     public void AddPlayer(string name)
     {
-        playerList.Add(new Player(name, playerColors[playerList.Count], levels.Length));
+        playerList.Add(new Player(name, playerColors[playerList.Count]));
     }
 
-    public void AddStrokes(int playerIndex, int StrokeCount)
+    public void AddStrokes(int playerIndex, int strokeCount)
     {
-        playerList[playerIndex].strokes[levelIndex] = StrokeCount;
+        playerList[playerIndex].totalStrokes += strokeCount;
+        playerList[playerIndex].currentStrokes = 0;
+    }
+
+    public List<Player> GetScoreboardList()
+    {
+        return (from p in playerList orderby p.totalStrokes select p).ToList();
     }
  
 
@@ -30,13 +37,14 @@ public class PlayerRecord : MonoBehaviour
     {
         public string name;
         public Color color;
-        public int[] strokes;
+        public int currentStrokes;
+        public int totalStrokes;
 
-        public Player(string newName, Color newColor, int levelCount)
+        public Player(string newName, Color newColor)
         {
             name = newName;
             color = newColor;
-            strokes = new int[levelCount];
+            currentStrokes = 0;
         }
     }
 }
