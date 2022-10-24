@@ -164,7 +164,7 @@ public class BallController : MonoBehaviour
     {
         level++;
 
-        if (level > 1)
+        if (level > 11)
         {
             SceneManager.LoadScene("Scoreboard");
         }
