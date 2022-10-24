@@ -97,8 +97,10 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: bb5528b69312b1b42b9e60cf7540ae20,
+    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: eeab037b1aaa6944e8afd515cc5fd6fc,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -461,7 +463,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+<<<<<<< HEAD
   m_fontSize: 29.75
+=======
+  m_fontSize: 18
+>>>>>>> 4422d6e380d5cec921414a9bbf9e3f266839a3d1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -649,7 +655,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+<<<<<<< HEAD
   m_fontSize: 44.45
+=======
+  m_fontSize: 21.95
+>>>>>>> 4422d6e380d5cec921414a9bbf9e3f266839a3d1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -736,7 +746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.41300002, y: 0.52058816}
   m_AnchorMax: {x: 0.5826543, y: 0.61935294}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 1.7382965, y: -111.2}
   m_SizeDelta: {x: 0.00000333786, y: 0.00000047683716}
   m_Pivot: {x: 0.6, y: 0.2}
 --- !u!114 &1013251937
@@ -870,7 +880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 148}
+  m_AnchoredPosition: {x: 0.000091552734, y: 46.160995}
   m_SizeDelta: {x: -843.2635, y: -605.1164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040153434
@@ -960,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1817,7 +1827,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+<<<<<<< HEAD
   m_fontSize: 48.5
+=======
+  m_fontSize: 5
+>>>>>>> 4422d6e380d5cec921414a9bbf9e3f266839a3d1
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
