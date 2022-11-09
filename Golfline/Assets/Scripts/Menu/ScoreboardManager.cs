@@ -10,7 +10,7 @@ public class ScoreboardManager : MonoBehaviour
 
     private PlayerRecord playerRecord;
     
-    void Start()
+    private void Start()
     {
         playerRecord = GameObject.Find("Player Record").GetComponent<PlayerRecord>();
         nameText.text = "";
@@ -22,7 +22,7 @@ public class ScoreboardManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         scoreText.fontSize = nameText.fontSize;
     }
@@ -30,6 +30,6 @@ public class ScoreboardManager : MonoBehaviour
     public void ButtonReturnMenu()
     {
         Destroy(playerRecord.gameObject);
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(0);
     }
 }

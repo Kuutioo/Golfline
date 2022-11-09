@@ -27,6 +27,11 @@ public class PlayerRecord : MonoBehaviour
         playerList[playerIndex].currentStrokes = 0;
     }
 
+    public void ResetList()
+    {
+        playerList = null;
+    }
+
     public List<Player> GetScoreboardList()
     {
         return (from p in playerList orderby p.totalStrokes select p).ToList();
